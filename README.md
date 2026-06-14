@@ -2,9 +2,15 @@
 
 A public, front-end-only sample of the marketing site for [Keeby](https://getkeeby.com) - a native app that plays realistic mechanical keyboard sounds, which reached **#1 Top Paid on the macOS App Store**.
 
-The live site scores a straight **100 across all four Lighthouse categories** - Performance, Accessibility, Best Practices, and SEO. This repo is a trimmed copy of that same front end, published so the build can be read and run.
+The live site at [getkeeby.com](https://getkeeby.com) scores **97+ on mobile Lighthouse** (97 Performance, 100 Accessibility, 100 Best Practices, 100 SEO) and **100 across all four categories on desktop**. Audited June 14, 2026 in Chrome DevTools. This repo is a trimmed copy of that same front end, published so the build can be read and run.
 
-![getkeeby.com Lighthouse: 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO](public/lighthouse-getkeeby.png)
+### Mobile (375px)
+
+![getkeeby.com Lighthouse mobile: 97 Performance, 100 Accessibility, 100 Best Practices, 100 SEO](public/lighthouse-getkeeby-mobile.png)
+
+### Desktop
+
+![getkeeby.com Lighthouse desktop: 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO](public/lighthouse-getkeeby-desktop.png)
 
 ## What this is
 
