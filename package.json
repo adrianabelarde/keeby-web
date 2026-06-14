@@ -1,0 +1,44 @@
+{
+  "name": "keeby-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/geist-mono": "^5.2.8",
+    "@supabase/supabase-js": "^2.45.0",
+    "@tabler/icons-react": "^3.41.1",
+    "clsx": "^2.1.1",
+    "cobe": "^2.0.1",
+    "lenis": "^1.3.21",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwind-merge": "^3.5.0",
+    "web-haptics": "^0.0.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "html-to-image": "^1.11.13",
+    "react-grab": "^0.1.31",
+    "tailwindcss": "^4.2.2",
+    "vite": "^5.4.21",
+    "vite-plugin-beasties": "^0.4.2"
+  }
+}

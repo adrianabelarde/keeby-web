@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.snap-x::-webkit-scrollbar { display: none; }
+.snap-x { -ms-overflow-style: none; scrollbar-width: none; }
+.notes-scroll { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.15) transparent; }
+.notes-scroll::-webkit-scrollbar { width: 4px; }
+.notes-scroll::-webkit-scrollbar-track { background: transparent; }
+.notes-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+.notes-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+.playground-switch-scroll { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.15) transparent; }
+.playground-switch-scroll::-webkit-scrollbar { width: 4px; }
+.playground-switch-scroll::-webkit-scrollbar-track { background: transparent; }
+.playground-switch-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+.playground-switch-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+/* macOS-style menu hover: on the blue highlight, the row's monochrome icons
+   (lucide SVGs use currentColor) snap to full white, matching the white text.
+   Disabled rows carry no SVG, so they're unaffected. Colored switch swatches
+   are <div>s, not SVGs, so they keep their colour. */
+.menu-row:hover svg { color: #fff; }
+body {
+  background: #F5F5F5;
+  -webkit-font-smoothing: antialiased;
+  font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, sans-serif;
+  font-weight: 500;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* Chromium/Safari paint a yellow/blue background on autofilled inputs that
+   ignores any background-color rule. The supported workaround is a huge inset
+   box-shadow matching the input's own background, plus a long no-op transition
+   to defer the engine's repaint. Scoped to our keeby-sounds inputs so we don't
+   touch unrelated page chrome. */
+input[data-keeby-sounds]:-webkit-autofill,
+input[data-keeby-sounds]:-webkit-autofill:hover,
+input[data-keeby-sounds]:-webkit-autofill:focus,
+input[data-keeby-sounds]:-webkit-autofill:active,
+textarea[data-keeby-sounds]:-webkit-autofill,
+textarea[data-keeby-sounds]:-webkit-autofill:hover,
+textarea[data-keeby-sounds]:-webkit-autofill:focus,
+textarea[data-keeby-sounds]:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: rgb(23 23 23) !important;
+  caret-color: rgb(23 23 23);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.tap-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+/* Left rings: active 0-50%, idle 50-100% */
+@keyframes ringAltL {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  8% { opacity: 0.45; }
+  45% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+}
+/* Right rings: idle 0-50%, active 50-100% */
+@keyframes ringAltR {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+  50% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  58% { opacity: 0.45; }
+  95% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+}
+
+@keyframes rippleOut {
+  0% { transform: scale(0.5); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes waveMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes shackleJiggle {
+  0%, 100% { transform: translateY(0); }
+  12% { transform: translateY(5px); }
+  24% { transform: translateY(0); }
+  32% { transform: translateY(5px); }
+  44% { transform: translateY(0); }
+}
+
+@keyframes keyDown {
+  0%, 100% { transform: translateY(0); }
+  40%, 60% { transform: translateY(4px); }
+}
+
+@keyframes keyUp {
+  0%, 100% { transform: translateY(0); }
+  40%, 60% { transform: translateY(-4px); }
+}
+
+@keyframes mouseClick {
+  0%, 100% { fill: #e0e0e0; }
+  12%, 20% { fill: #d6d6d6; }
+}
+
+@keyframes sliderDrift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes latencyOrbit {
+  0% { stroke-dashoffset: 0; stroke-dasharray: 0 100; }
+  40% { stroke-dasharray: 20 80; }
+  100% { stroke-dashoffset: -100; stroke-dasharray: 0 100; }
+}
+
+.fade-1 { animation: fadeUp 0.7s ease forwards; }
+.fade-2 { animation: fadeUp 0.7s ease 0.08s forwards; opacity: 0; }
+.fade-3 { animation: fadeUp 0.7s ease 0.16s forwards; opacity: 0; }
+.fade-4 { animation: fadeUp 0.7s ease 0.24s forwards; opacity: 0; }
+.fade-5 { animation: fadeUp 0.9s ease 0.32s forwards; opacity: 0; }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* Per-character slide-up + blur stagger used by <AnimatedCity> in Globe.jsx.
+   Each character span sets its own animation-delay inline so the stagger
+   can adapt to any city-name length without dedicated .fade-N classes. */
+.thock-char {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeUp 0.28s cubic-bezier(0.32, 0.72, 0.32, 1) forwards;
+}
+
+/* Smooth caret pulse for the typing playground — never fully invisible, so the
+   caret feels "present" even mid-blink. */
+@keyframes caretPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.caret-pulse { animation: caretPulse 1.1s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Loader dots above "See it in action" — 4 keeby logos pulsing as a wave:
+   each dot swells up + down smoothly (peak at 50% of cycle) but staggered
+   so adjacent dots overlap, creating a traveling wave rather than a harsh
+   one-at-a-time cascade. */
+@keyframes keebyLoaderPulse {
+  0%, 100% { filter: saturate(0) opacity(0.3); }
+  50%      { filter: saturate(1) opacity(1); }
+}
+.keeby-loader-dot {
+  filter: saturate(0) opacity(0.3);
+  animation: keebyLoaderPulse 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: filter, opacity;
+}
+
+/* Subtle orange shimmer for the "keeby" word in the typing playground.
+   Gentle gradient between two shades of orange, slow glide — just enough
+   motion to feel alive without pulling focus away from the actual typing. */
+@keyframes keebyShimmer {
+  0%   { background-position: 180% center; }
+  100% { background-position: -80% center; }
+}
+.keeby-shimmer {
+  background-image: linear-gradient(90deg, #ff8c17 0%, #ffa743 50%, #ff8c17 100%);
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: keebyShimmer 4s linear infinite;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes keycapPop {
+  0% { transform: scale(0.5); opacity: 0; filter: blur(4px); }
+  40% { transform: scale(1.15); opacity: 1; filter: blur(0); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes clickWave {
+  0% { opacity: 0; transform: scale(0.7); }
+  30% { opacity: 0.6; }
+  100% { opacity: 0; transform: scale(1.1); }
+}
+
+@keyframes nudgeRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+.keycap-pop {
+  animation: keycapPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes slideInUp {
+  0% { transform: translateY(80%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideOutUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-80%); opacity: 0; }
+}
+.animate-slide-in-up {
+  animation: slideInUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.animate-slide-out-up {
+  animation: slideOutUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* iOS-style blur text animations */
+@keyframes iosBlurIn {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+/* Exit is two parallel animations so the element is fully faded + blurred
+   before the slide-up finishes — no abrupt "cut" at the end. */
+@keyframes iosBlurFadeOut {
+  from { opacity: 1; filter: blur(0); }
+  to { opacity: 0; filter: blur(14px); }
+}
+@keyframes iosBlurSlideOut {
+  from { transform: translateY(0); }
+  to { transform: translateY(-14px); }
+}
+.ios-blur-in {
+  animation: iosBlurIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, filter, transform;
+}
+.ios-blur-out {
+  animation:
+    iosBlurFadeOut 0.18s cubic-bezier(0.45, 0, 0.9, 0.4) both,
+    iosBlurSlideOut 0.28s cubic-bezier(0.3, 0, 0.7, 0.4) both;
+  will-change: opacity, filter, transform;
+}
+
+/* Stronger slide-up variant for hero numbers */
+@keyframes iosStatIn {
+  from {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(44px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@keyframes iosStatFadeOut {
+  from { opacity: 1; filter: blur(0); }
+  to { opacity: 0; filter: blur(20px); }
+}
+@keyframes iosStatSlideOut {
+  from { transform: translateY(0); }
+  to { transform: translateY(-60px); }
+}
+.ios-stat-in {
+  animation: iosStatIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, filter, transform;
+}
+.ios-stat-out {
+  animation:
+    iosStatFadeOut 0.25s cubic-bezier(0.45, 0, 0.9, 0.4) both,
+    iosStatSlideOut 0.4s cubic-bezier(0.3, 0, 0.7, 0.4) both;
+  will-change: opacity, filter, transform;
+}
