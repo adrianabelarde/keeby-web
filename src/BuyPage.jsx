@@ -1,9 +1,5 @@
-// Public sample: this is a static "Get Keeby for Windows" page.
-//
-// The production site runs a region-aware checkout here (PayMongo ₱199 for PH
-// e-wallets, Polar in USD elsewhere) with email license-key delivery. None of
-// that payment code ships in this public sample, so this page is purely a
-// front-end download CTA that points at the live product.
+// Public sample: a simplified placeholder for the /windows page.
+// The download button points at the live product.
 
 const WINDOWS_DOWNLOAD = 'https://getkeeby.com/download/KeebySetup.msi'
 const MAC_APP_STORE = 'https://apps.apple.com/us/app/keeby/id6760791739?mt=12'
@@ -21,7 +17,7 @@ export default function BuyPage() {
           Get Keeby for Windows
         </h1>
         <p className="text-[15px] text-neutral-600 mb-8">
-          Lifetime license, activates on up to 2 devices.
+          Your keyboard, but better.
         </p>
 
         <a
@@ -40,8 +36,8 @@ export default function BuyPage() {
         </p>
 
         <p className="mt-10 text-[12px] text-neutral-400 leading-relaxed">
-          Note: checkout and license delivery run on the live site, not in this
-          public sample. Buttons here link to the real product.
+          This page is a simplified placeholder in the public sample. Buttons
+          link to the real product.
         </p>
       </article>
     </div>

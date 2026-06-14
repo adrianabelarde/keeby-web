@@ -21,8 +21,7 @@ A [Vite](https://vite.dev) + React 19 + Tailwind v4 single-page marketing site, 
 This is a sample, not the production app. The following are **not** included:
 
 - **Sound profiles** - the recorded mechanical switch sounds ship with the commercial app and are its core IP. The Sound Pad and typing UI render fully but are silent here.
-- **Payments** - the live site runs a region-aware checkout (PayMongo for PH e-wallets, Polar in USD) with email license-key delivery. None of that code is here; the buy page is a static download CTA pointing at the live product.
-- **Backend** - the Supabase-backed thock counter, realtime globe feed, and feedback storage are stripped. The front end seeds a static count and simulates these calls, so everything still renders. No API routes, no `.env`, no keys.
+- **Server-side features** - the thock counter, realtime globe feed, feedback storage, and the download/store pages are stripped down to front-end placeholders. The UI seeds static values and simulates these calls, so everything still renders. No API routes, no `.env`, no keys.
 
 ## Run it
 

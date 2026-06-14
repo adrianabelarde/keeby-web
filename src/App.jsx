@@ -31,8 +31,7 @@ function LazySectionFallback() {
 }
 
 const APP_STORE = "https://apps.apple.com/us/app/keeby/id6760791739?mt=12"
-const isPH = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Manila'
-const PRICE = isPH ? '₱199' : '$4.99'
+const PRICE = '$4.99'
 const APP_LIVE = true
 const EU_AVAILABILITY_LABEL = 'Now available in EU'
 const menuPanelFrame = "relative isolate overflow-hidden rounded-[8px] sm:rounded-[12px] border border-white/12 bg-black/36 bg-clip-padding shadow-[0_18px_48px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-1px_0_rgba(0,0,0,0.18)] backdrop-saturate-150"
@@ -955,7 +954,7 @@ function PubmatPage() {
             <svg width="24" height="24" viewBox="0 0 17 20" fill="white"><path d="M12.15 0c.12 1.17-.35 2.33-1.05 3.17-.71.84-1.85 1.5-2.97 1.41-.14-1.13.36-2.33 1.03-3.07C9.87.67 11.06.06 12.15 0zm3.56 6.82c-.09.05-2.12 1.22-2.1 3.63.02 2.88 2.54 3.87 2.57 3.88-.02.07-.4 1.37-1.33 2.72-.82 1.17-1.67 2.34-3.01 2.36-1.32.02-1.74-.78-3.25-.78s-1.99.76-3.24.8c-1.29.04-2.27-1.27-3.1-2.43C.55 14.72-.73 10.2 1.03 7.14c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.49.87 3.27.87.78 0 2.24-1.07 3.77-.91.64.03 2.45.26 3.61 1.95l-.09.08z"/></svg>
             Available on the Mac App Store
           </div>
-          <p className="text-[16px] text-[#999] -mt-3">₱199 one-time purchase</p>
+          <p className="text-[16px] text-[#999] -mt-3">{PRICE} one-time purchase</p>
         </div>
 
         {/* Right */}
@@ -1331,7 +1330,7 @@ function NavToggleSwitch({ value, onChange, ariaLabel }) {
 // bottom CTAs (desktop + mobile). The `variant` prop maps to the
 // existing trigger button styling so the visual rhythm of the page
 // doesn't change. Click the trigger -> menu opens -> user picks
-// Mac (App Store) or Windows (/windows, region-aware checkout).
+// Mac (App Store) or Windows (/windows download page).
 // Single auto-detected download button. Replaces the old dropdown — most
 // visitors are confidently Mac or Windows, so the picker step was friction
 // for 95% of traffic. Mac/iPad (App Store works on both) goes to the store;
